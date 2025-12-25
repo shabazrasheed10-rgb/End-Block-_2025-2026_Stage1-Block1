@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End-Block 2025-2026</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Tahoma", "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px 30px;
+            box-sizing: border-box;
+        }
+
+                      .header { 
+          text-align: center; 
+          margin-bottom: 20px;
+          background-color: #2D2D2D;
+          color: white;
+          padding: 14px;
+          border-radius: 7px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .header h1 { font-size: 1.8rem; margin: 0; letter-spacing: 0.5px; }
+
+        /* This only triggers on small mobile screens (less than 600px) */
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column; /* Stack vertically */
+                gap: 8px;               /* Add space between lines */
+                padding: 20px 10px;     /* Give it more room */
+            }
+
+            .header h1 {
+                margin-bottom: 5px;
+            }
+
+            .header h5 {
+                margin: 2px 0;          /* Tighten spacing for mobile */
+            }
+        }
+
+
+        
+        .divider { 
+            border: none; 
+            border-top: 1px solid lightgrey; 
+            margin-bottom: 100px; 
+        }
+
+        .q-block {
+            margin-bottom: 40px;
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 25px;
+            position: relative; /* Needed for the Kurdish button fix */
+        }
+
+        .rtl-block {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .q-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: black;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .opts {
+            list-style-type: none;
+            padding: 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* FLEX ROW SETUP */
+        .ans-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 50px;
+        }
+
+        /* --- ENGLISH STYLE (1-28) --- */
+        .ans-row { justify-content: space-between; }
+
+        /* --- KURDISH STYLE (29-54) --- */
+        /* We force the button to the left and text to the right using absolute positions */
+        .rtl-block .ans-btn {
+            position: absolute;
+            left: 0;
+            bottom: 25px; /* Aligns with the bottom padding of the q-block */
+        }
+
+        .rtl-block .ans-text {
+            margin-right: 0;
+            margin-left: auto; /* Pushes text to the right side */
+        }
+
+        .ans-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2e7d32;
+            visibility: hidden;
+            background-color: #f1f8e9;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+
+        .q-block.revealed .ans-text {
+            visibility: visible;
+        }
+        a{
+          color: #729fcf;
+        }
+    
+
+        .ans-btn {
+            background-color: #729fcf;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .ans-btn:hover { background-color: #5d8ab9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+    
+         <h1>End-Block</h1>
+        <h5>Stage 1- Block 1</h5>
+        <h5>2025-2026</h5>
+        
+        
+    
+       
+        <h5>Created by <span><a href="https://t.me/Shabaz_Rasheed">Shabaz Rasheed</a></span></h5>
+    </div>
+    <hr class="divider">
+    <div id="quiz-content"></div>
+</div>
+
+<script>
+    const data = [
+      { n: 1, q: "Which type of argument relies primarily on numerical data?", o: ["A) Narrative argument", "B) Ethical argument", "C) Logical argument", "D) Statistical argument", "E) Emotional argument"], a: "D" },
+      { n: 2, q: "The proposition team in a debate is responsible for:", o: ["A) Challenging the motion", "B) Controlling timing", "C) Eliminating judging bias", "D) Providing counterexamples", "E) Supporting the motion with evidence"], a: "E" },
+      { n: 3, q: "A well-written debate motion should be:", o: ["A) A clear declarative statement", "B) A long paragraph", "C) A personal belief", "D) A question asking for opinions", "E) A vague statement"], a: "A" },
+      { n: 4, q: "The doctor challenges the patient's assumption and asks for evidence. This demonstrates:", o: ["A) Anchoring", "B) Critical thinking", "C) Emotional reasoning", "D) Inference", "E) Overconfidence"], a: "B" },
+      { n: 5, q: "Rebuttals aim to:", o: ["A) Challenge the opponent's argument using facts", "B) Criticize the opponent personally", "C) Introduce unrelated evidence", "D) Repeat earlier points", "E) Summarize the debate"], a: "A" },
+      { n: 6, q: "Which source provides the highest level of medical evidence?", o: ["A) Case report", "B) Case-control study", "C) Cross-sectional study", "D) Expert opinion", "E) Systematic review & meta-analysis"], a: "E" },
+      { n: 7, q: "EBM combines research evidence with:", o: ["A) Clinical expertise and patient values", "B) Hospital policy", "C) Medical tradition", "D) Patient demands only", "E) Physician intuition only"], a: "A" },
+      { n: 8, q: "A cohort study is best described as:", o: ["A) Combining many trials", "B) Observing groups over time to compare outcomes", "C) Randomly assigning patients to groups", "D) Reporting a single patient", "E) Retrospective comparison of cases and controls"], a: "B" },
+      { n: 9, q: "A doctor assumes a young patient with chest pain is too young for myocardial infarction. This is:", o: ["A) Anchoring bias", "B) Availability bias", "C) Confirmation bias", "D) Post hoc fallacy", "E) Stereotyping bias"], a: "E" },
+      { n: 10, q: "Which fallacy assumes that because event B followed A, A must have caused B?", o: ["A) Appeal to emotion", "B) False equivalence", "C) Post hoc fallacy", "D) Slippery slope", "E) Strawman"], a: "C" },
+      { n: 11, q: "Ignoring all evidence contradicting your first impression is:", o: ["A) Anchoring bias", "B) Confirmation bias", "C) Framing effect", "D) Hasty generalization", "E) Overconfidence bias"], a: "B" },
+      { n: 12, q: "Relying on a famous doctor's opinion without supporting data is:", o: ["A) Appeal to authority", "B) Appeal to nature", "C) Circular reasoning", "D) False dilemma", "E) Red herring"], a: "A" },
+      { n: 13, q: "A critical thinker aims to:", o: ["A) Accept information quickly", "B) Avoid opposing views", "C) Focus only on beliefs", "D) Memorize facts", "E) Question and evaluate information"], a: "E" },
+      { n: 14, q: "Which habit helps reduce diagnostic errors?", o: ["A) Authority dependence", "B) Emotional reasoning", "C) Impulsivity", "D) Open-mindedness", "E) Overconfidence"], a: "D" },
+      { n: 15, q: "Breaking down a complex problem into smaller parts is:", o: ["A) Analysis", "B) Circular thinking", "C) Emotional reasoning", "D) Observation", "E) Projection"], a: "A" },
+      { n: 16, q: "Bradycardia refers to:", o: ["A) A rapid heart rate", "B) A slow heart rate", "C) A normal heart rate", "D) A painful heartbeat", "E) An irregular heart rhythm"], a: "B" },
+      { n: 17, q: "In the medical term arthroplasty, the element arthr/o represents a:", o: ["A) Suffix", "B) Prefix", "C) Combining form", "D) Abbreviation", "E) Modifier"], a: "C" },
+      { n: 18, q: "The surgical removal of the gallbladder is known as:", o: ["A) Cholecystitis", "B) Cholelithiasis", "C) Cholecystectomy", "D) Cholelithotomy", "E) Cholecystopexy"], a: "C" },
+      { n: 19, q: "A 35-year-old male presents with difficulty in urination. Which specialist should he be referred to?", o: ["A) Urologist", "B) Hematologist", "C) Dermatologist", "D) Cardiologist", "E) Neurologist"], a: "A" },
+      { n: 20, q: "“plasty” means repair. In the term nephroplasty, it functions as a:", o: ["A) Prefix", "B) Suffix", "C) Combining form", "D) Word root", "E) Abbreviation"], a: "B" },
+      { n: 21, q: "The component of a medical term that provides its basic meaning is called the:", o: ["A) Suffix", "B) Prefix", "C) Combining form", "D) Word root", "E) Abbreviation"], a: "D" },
+      { n: 22, q: "In the term cardiology, the suffix “-logy” means:", o: ["A) Inflammation", "B) Study of", "C) Enlargement", "D) Repair", "E) Disease"], a: "B" },
+      { n: 23, q: "Malabsorption is defined as:", o: ["A) Normal absorption", "B) Excessive absorption", "C) Defective or poor absorption", "D) Complete absence of absorption", "E) Delayed absorption"], a: "C" },
+      { n: 24, q: "Cryotherapy refers to treatment using:", o: ["A) Heat", "B) Cold", "C) Ultrasound", "D) Electricity", "E) Radiation"], a: "B" },
+      { n: 25, q: "The term thoracotomy means:", o: ["A) Surgical incision of the chest", "B) Chest pain", "C) Cancer of the chest", "D) Heart failure", "E) Chest infection"], a: "A" },
+      { n: 26, q: "The root nephr refers to the:", o: ["A) Kidney", "B) Heart", "C) Cell", "D) Body", "E) Blood"], a: "A" },
+      { n: 27, q: "A patient is exposed to an environmental temperature of 48 °C. What is the most likely resulting condition?", o: ["A) Pyrexia", "B) Fever", "C) Hyperthyroidism", "D) Hyperthermia", "E) Sun exposure"], a: "D" },
+      { n: 28, q: "In the medical term gastroduodenoplasty, the letter “o” between gastr- and duoden- represents which of the following?", o: ["A) Prefix", "B) Suffix", "C) Root", "D) Combining vowel", "E) Plural ending"], a: "D" },
+      { n: "٢٩", q: "ژمارەی چیاکان لە کوردستان ١٢٢ و بەپێی هەندێ کەس ئەو ژمارەیە بەرز دەکەنەوە بۆ", o: ["A) ٢٢١", "B) ٢٣٤", "C) ٣٢٣", "D) ٢٢٠", "E) ٢٢٢"], a: "A" },
+      { n: "٣٠", q: "کوردە موسڵمانەکانی ئاگری و بینگۆڵ و دەرسیم و پوش و کەرکووک سەر بە چ ئایینزایەکن؟", o: ["A) شافیعی", "B) حەنەفی", "C) مالیکی", "D) حەمبەلی", "E) شافیعی و مالیکی"], a: "B" },
+      { n: "٣١", q: "لە ڕووی پێکهاتەی نەتەوەییەوە، کوردەکان لە سەدا چەندی دانیشتوانی کوردستان پێکدەهێنن؟", o: ["A) ٩٥٪", "B) ٨٣٪", "C) ٧٦٪", "D) ٨٥٪", "E) ٧٩٪"], a: "C" },
+      { n: "٣٢", q: "خێزانە زمانی هیندۆئەوروپی ئەو گەلانە دەگرێتەوە کە دەکەونە ناوەڕاستی ئاسیا تا ئەوپەڕی کەناری __.", o: ["A) ئەوروپا", "B) ڕۆژئاوا", "C) ڕۆژئاوای ئەوروپا", "D) باکوور", "E) باشوور"], a: "C" },
+      { n: "٣٣", q: "ئەو زمانەیە کە لە لایەن زۆربەی نووسەران، ئەکادیمیان، زانایان، پڕۆفیسۆران و کارگێران لە خوێندن و نووسین و زانست و ئەدەبیات و بەڕێوەبردنی کارگێڕیدا بەکاردێت", o: ["A) زمانی جەستە", "B) زمانی ستاندارد", "C) زمانی نووسین", "D) زمانی دایک", "E) زمانی ئاماژە"], a: "B" },
+      { n: "٣٤", q: "ڕووبەری گشتی کوردستانی گەورە چەندە؟", o: ["A) ٥٠٠٠٠٠٠کم²", "B) ٥٠٠٠کم²", "C) ٥٠٠٠٠٠کم²", "D) ٥٠٠٠٠٠٠٠٠٠کم²", "E) ٥٠٠کم²"], a: "C" },
+      { n: "٣٥", q: "ڕێژەی ئەو کوردانەی موسڵمانن لە کوردستان چەندن؟", o: ["A) ٩٥٪", "B) ٨٣٪", "C) ٧٦٪", "D) ٨٥٪", "E) ٧٩٪"], a: "A" },
+      { n: "٣٦", q: "لە کوردستان تا بەرەو ____ بڕۆین باران کەم دەبێتەوە.", o: ["A) باشوور", "B) باکوور", "C) باکوور و ڕۆژهەڵات", "D) باشوور و ڕۆژئاوا", "E) باشوور و ڕۆژهەڵات"], a: "D" },
+      { n: "٣٧", q: "ڕۆمانیەکان بە کوردەکانیان دەگووت ____.", o: ["A) قاردو", "B) قاردۆشی", "C) کورتی", "D) بلاد الاکراد", "E) کورا قتیوم"], a: "B" },
+      { n: "٣٨", q: "مینۆرسکی لە کتیێبی (بنچینەکانی کورد) ئاماژە بەوە دەکات کە وشەی کورد لە بنچینەدا لە وشەی (کاردۆ) هاتووە، ئەم وشەیەش لە ___ واتای بەهێز، پاڵەوان دەگەیەنێت.", o: ["A) ئێرانی", "B) ئاشوری", "C) هیندی", "D) عەرەبی", "E) سۆمەری"], a: "B" },
+      { n: "٣٩", q: "چۆمسکی دەڵێت لە توانای مرۆڤ دایە ژمارەیەکی بێسنوور ڕستە دابهێنێ بێ ئەوەی پێشتر گوێی لێ بوبێ، کەواتە زمان؛", o: ["A) دەنگە", "B) داهێنانە", "C) هێمایە", "D) تایەتە بە مرۆڤ", "E) سیستەمە"], a: "B" },
+      { n: "٤٠", q: "پوختەی بیرو ئەزموونی مرۆڤە.", o: ["A) هەقایەت", "B) پەندی پێشینان", "C) ئەفسانە", "D) مەتەڵ", "E) گۆرانی"], a: "B" },
+      { n: "٤١", q: "زمان لە دوو پێڕەوی سەرەکی پێکدێت ئەوانیش پێڕەوی ____.", o: ["A) هزر و بیرە", "B) دەنگ و واتا", "C) بانگ و قیژە", "D) واتا و هزرە", "E) قیژەو هزرە"], a: "B" },
+      { n: "٤٢", q: "کۆمەڵێک حیکایەتی کۆنن، هەموو شتەکانی ناوی (پاڵەوان، کەرەستە, شوێن، ڕووداو) ڕاستەقینە نین.", o: ["A) پەندی پێشینان", "B) هەقایەت", "C) ئەفسانە", "D) مەتەڵ", "E) چیڕۆک"], a: "C" },
+      { n: "٤٣", q: "چینی هیندۆئەوروپیەکان کۆچیان کردووە بۆ کوردستان و لەوێ نیشتەجێبوون لە سەدەی ___.", o: ["A) ٩ی پێش زایین", "B) ١٠ی پێش زایین", "C) ٩ی پاش زایین", "D) ١٠ی پاش زایین", "E) ١١ی پێش زایین"], a: "B" },
+      { n: "٤٤", q: "ڕووباری ئاراس لە ناوچەی ___ لە تورکیا سەرچاوە دەگرێت.", o: ["A) گولجووك", "B) بینگۆل", "C) ئالازیغ", "D) فورات صو", "E) موراد صو"], a: "B" },
+      { n: "٤٥", q: "زمانی جەستە ئەو زمانەیە کەتیایدا جەستە بەبێ _____ بەکاردێت.", o: ["A) واتا", "B) گۆکردنی دەنگ", "C) جوڵەی ڕوخسار", "D) نوسین", "E) دەست و پەنجە"], a: "B" },
+      { n: "٤٦", q: "کام لەم پیتانەی خوارەوە لە عەرەبی نەبوون و لە کوردیان زیادکراون؟", o: ["A) ح-خ", "B) پ-چ", "C) ش-س", "D) ز-ر", "E) ل-د"], a: "B" },
+      { n: "٤٧", q: "یەکێ لە گرفتەکانی ئەلف و بێی لاتینی ئەوەیە کە پیتی (ك، ق)", o: ["A) جیاوازی کراوە", "B) جیاوازی نەکراوە", "C) نەنووسراوە", "D) بەکارنەهێنراوە", "E) پیتیان نییە لە لاتینی"], a: "B" },
+      { n: "٤٨", q: "ریالیزم شتە چەوت و ناشرینەکان دەخاتە ڕوو وەک کاردانەوەیەک بۆ ____.", o: ["A) کلاسیك", "B) ڕۆمانتیك", "C) شیعر", "D) چیڕۆک", "E) رۆمان"], a: "B" },
+      { n: "٤٩", q: "گەڕان و پشکنینە بەدوای کڕۆکی ڕووداو و کارەساتە کۆنەکان.", o: ["A) جوگرافیا", "B) زمان", "C) ئەدەب", "D) مێژوو", "E) ئابووری"], a: "D" },
+      { n: "٥٠", q: "___ ڕاستیەکانی زانست دەخاتە ڕوو، بە شێوەیەکی ڕاستەوخۆ پێویستی بە هەڵبژاردنی وشەو داڕشتنی جوان خەیاڵ و ڕەوانبێژی ناکات", o: ["A) پەخشانی ئەدەبی", "B) پەخشانی زانستی", "C) شیعر", "D) چیڕۆک", "E) ڕۆمان"], a: "B" },
+      { n: "٥١", q: "___ وردە وردە گەشەدەکات نەک ئامادەکراو بێت وەک ڕێبازی کلاسیزم و ڕۆمانسیزم", o: ["A) ڕەخنە", "B) مێژوو", "C) پاڵەوان", "D) کەرەستە", "E) شیعر"], a: "C" },
+      { n: "٥٢", q: "ڕێبازێکی ئەدەبی و هونەری فراوانە لای هەندێ نووسەر بە نوێ دادەنرێت", o: ["A) ئەدەبی کلاسیك", "B) ئەدەبی ڕۆمانسیزم", "C) ئەدەبی ڕیالیزم", "D) شیعر", "E) چیڕۆك"], a: "B" },
+      { n: "٥٣", q: "کوردستان دەکەوێتە نێوان بازنەی پانی", o: ["A) (٤٠:٣٩:٦١)", "B) (٥٩:٣١:٦٠)", "C) (٥٢:٣٩:٦١)", "D) (٤٢:٣١:٦٠)", "E) (٤٠:٣١:٦٠)"], a: "A" },
+      { n: "٥٤", q: "زمانی ژاپۆنی سەر بە کام خێزانە زمانە؟", o: ["A) سامی و حامی", "B) هیندۆئەوروپی", "C) تۆرانی", "D) ئێرانی", "E) هیندی"], a: "C" },
+    
+    
+    { n: 55, q: "What are the common uses of Microsoft Word?", o: ["A) Financial calculation", "B) Organizing data", "C) Reports, letters, and resumes", "D) Creating presentations", "E) Classroom lectures"], a: "C" },
+    { n: 56, q: "Which of the following defines 'Style'?", o: ["A) A method for inserting images", "B) Pre-defined sets of formatting options", "C) A tool for checking spelling", "D) A type of page break", "E) A way to track changes"], a: "B" },
+    { n: 57, q: "The term 'Presenter View' refers to which of the following?", o: ["A) The pane that shows the text content of each slide", "B) A view used to edit slide master elements", "C) The gallery for choosing slide transitions", "D) A way to view the presentation with speaker notes and a timer", "E) A tool for adding animations to objects"], a: "D" },
+    { n: 58, q: "In which tab can you add a slide transition?", o: ["A) Transitions tab", "B) Home tab", "C) Insert tab", "D) Animations tab", "E) Data tab"], a: "A" },
+    { n: 59, q: "Which of the following is not part of an email's structure?", o: ["A) Subject line", "B) Font size", "C) To line", "D) CC line", "E) BCC line"], a: "B" },
+    { n: 60, q: "What type of email should you write to your manager?", o: ["A) Informal", "B) Social", "C) Personal", "D) Formal", "E) Casual"], a: "D" },
+    { n: 61, q: "What is an automatically generated list of headings with page numbers called?", o: ["A) Pivot tables", "B) Conditional formatting", "C) Master slide", "D) Morph transitions", "E) Table of contents"], a: "E" },
+    { n: 62, q: "Which feature is used to insert data from a data source into a main document?", o: ["A) Pivot table", "B) Mail merge", "C) VLOOKUP", "D) Conditional formatting", "E) Data validation"], a: "B" },
+    { n: 63, q: "What is the use of a Master Slide?", o: ["A) Create consistent elements across your presentation", "B) To record macros for repetitive tasks", "C) To view speaker notes during a presentation", "D) To add audio and video files", "E) To transition between different slideshows"], a: "A" },
+    { n: 64, q: "In Microsoft Windows, what is File Explorer used for?", o: ["A) To browse the internet", "B) To manage files and folders", "C) To change the desktop wallpaper", "D) To create spreadsheets", "E) To manage user account privileges"], a: "B" },
+    { n: 65, q: "Which of the following is a logical function?", o: ["A) VLOOKUP", "B) HLOOKUP", "C) Index", "D) Math", "E) IF"], a: "E" },
+    { n: 66, q: "Which tool is used to analyze and summarize large data?", o: ["A) Mail merge", "B) Master slide", "C) File explorer", "D) Pivot table", "E) Control panel"], a: "D" },
+    { n: 67, q: "Which function is used to look up a value in a table?", o: ["A) SUM", "B) VLOOKUP", "C) COUNT", "D) AVERAGE", "E) IF"], a: "B" },
+    { n: 68, q: "Which of the following is an example of a wearable device?", o: ["A) CT scan", "B) MRI", "C) Ultrasound image", "D) X-ray", "E) Fitness tracker"], a: "E" },
+    { n: 69, q: "Where can you change the wallpaper?", o: ["A) Taskbar", "B) Control panel", "C) Start menu", "D) Manage device", "E) Recycle bin"], a: "B" },
+    { n: 70, q: "Which function searches for a value in a row and returns a value from a specified row?", o: ["A) VLOOKUP", "B) MATCH", "C) INDEX", "D) HLOOKUP", "E) IF"], a: "D" },
+    { n: 71, q: "Which research method combines both qualitative and quantitative approaches?", o: ["A) Mixed-Methods Research", "B) Action Research", "C) Longitudinal Research", "D) Cross-Sectional Research", "E) Case Study Research"], a: "A" },
+    { n: 72, q: "Which type of research studies the same subjects over a long period?", o: ["A) Action Research", "B) Mixed-Methods Research", "C) Longitudinal Research", "D) Cross-Sectional Research", "E) Case Study Research"], a: "C" },
+    { n: 73, q: "A Workbook is a collection of:", o: ["A) Formulas", "B) Cells", "C) Styles", "D) Themes", "E) Worksheets"], a: "E" },
+    { n: 74, q: "Which of the following is correct regarding relative and absolute references?", o: ["A) Both are the same", "B) Relative changes when copied but absolute remains fixed", "C) Absolute changes when copied but relative remains fixed", "D) Absolute references use the % sign", "E) Relative references use the $ sign"], a: "B" },
+    { n: 75, q: "Which function is used to calculate the average of a range of cells?", o: ["A) AVERAGE", "B) SUM", "C) COUNT", "D) IF", "E) AND"], a: "A" },
+    { n: 76, q: "Which feature keeps certain rows or columns visible while scrolling?", o: ["A) Master slide", "B) Pivot tables", "C) Conditional formatting", "D) Freezing panes", "E) Sorting"], a: "D" },
+    { n: 77, q: "Which of the following is an ethical consideration in healthcare technology?", o: ["A) Protecting patient data", "B) High cost of devices", "C) Increasing surgical speed", "D) Using herbal medicine", "E) Decreasing mortality rates"], a: "A" },
+    { n: 78, q: "Which of the following is a benefit of AI in medicine?", o: ["A) High cost", "B) Medical Image Analysis", "C) Complexity of systems", "D) Data security risks", "E) Algorithmic bias"], a: "B" },
+    { n: 79, q: "Which of the following should you do before sending an email?", o: ["A) Use as many emojis as possible", "B) Proofread for spelling and grammar", "C) Delete the subject line", "D) Change the font color to bright red", "E) Send it as an 'Urgent' message regardless of content"], a: "B" },
+    
+    
+    { n: 80, q: "Ali had problems with presentations and speaking in front of people because he was scared of making a mistake. His mentor suggested he present in tomorrow’s tutorial. Although hesitant and nervous, he agreed. After extensive practice and training, he managed to speak publicly and received immense support and approval from his surroundings. He was more confident and willing to improve afterwards. Which of the following best describes Ali’s response?", o: ["A) Fixed mindset and fear of failure", "B) Immediate withdrawal from challenges", "C) Positive change and professional growth", "D) A physiological reaction to distress", "E) Staying within the comfort zone"], a: "C" },
+
+{ n: 81, q: "Sarah has trouble managing deadlines and submits assignments late. After receiving constructive feedback from her professor, she decides to turn in her assignments on time and participate in time management skill workshops. She noted significant improvement in her experiences. Which of the following best describes Sarah’s response?", o: ["A) Maintaining a comfortable mental state that limits growth", "B) A purely internal change in mindset without external action", "C) Reacting to a perceived threat with a fight-or-flight response", "D) Intentional modification of behaviors and attitudes to produce improvement", "E) An increase in chronic distress due to new obligations"], a: "D" },
+
+{ n: 82, q: "Which of the following is a factor used to reduce stress?", o: ["A) Increasing ambiguity in daily tasks", "B) Deep breathing", "C) Avoiding all forms of eustress", "D) Procrastinating on difficult assignments", "E) Neglecting regular rest and routine"], a: "B" },
+
+{ n: 83, q: "Which of the following defines \"Stress\"?", o: ["A) Our mental, physical, emotional, and behavioral reactions to any perceived demands or threats", "B) A mental state that only occurs when we are successful", "C) An external observable action that always leads to skill development", "D) A physiological reaction that only occurs during physical exercise", "E) The intentional modification of attitudes to produce improvement"], a: "A" },
+
+{ n: 84, q: "What are threats in the context of personal development?", o: ["A) Internal strengths and talents", "B) Intentional positive changes", "C) Personal goals and aspirations", "D) Internal factors that increase self-confidence", "E) External obstacles or challenges"], a: "E" },
+
+{ n: 85, q: "Which should be identified first when writing a SWOT analysis?", o: ["A) Strengths", "B) Threats", "C) Goals", "D) Opportunities", "E) Weaknesses"], a: "A" },
+
+{ n: 86, q: "Who introduced the term \"SWOT analysis\"?", o: ["A) Abraham Maslow", "B) Albert Humphrey", "C) Daniel Goleman", "D) Sigmund Freud", "E) Howard Gardner"], a: "B" },
+
+{ n: 87, q: "During times of physical attack or stress, the \"fight\" response supplies:", o: ["A) Oxytocin", "B) Serotonin", "C) Prolactin", "D) Protection by preparing to take action", "E) ATP for long-term wear on the body"], a: "D" },
+
+{ n: 88, q: "Which of the following is FALSE regarding how SWOT analysis is used?", o: ["A) Building on strengths", "B) Minimizing weaknesses", "C) Improving personal and professional growth", "D) Identifying external threats", "E) Reducing opportunities"], a: "E" },
+
+{ n: 89, q: "What is the \"Wheel of Life\"?", o: ["A) A physiological reaction to a stressor known as reactivity", "B) A mental state that does not allow for personal growth", "C) A tool used to assess different areas of life such as health, career, and social development", "D) The process of replacing negative thoughts with constructive ones", "E) A method for calculating the amount of eustress in a person's life"], a: "C" },
+
+{ n: 90, q: "What is \"Positive Change\"?", o: ["A) A stable, long-term mental framework that changes slowly", "B) The experience of feeling overwhelmed and oppressed by responsibilities", "C) Staying in a situation where you do not have to do anything new", "D) A physiological response that results in long-term wear on the body", "E) The action of making improvements in behavior and skills that is external and observable"], a: "E" },
+
+{ n: 91, q: "Which of the following is associated with the \"Comfort Zone\"?", o: ["A) A place where you actively try things outside your bubble", "B) A mental state that does not allow for personal growth", "C) The intentional modification of behaviors for professional growth", "D) A situation where you are constantly challenged by new tasks", "E) A state that encourages taking risks and immediate action"], a: "B" },
+
+{ n: 92, q: "Which of the following defines the \"Fight or Flight\" response?", o: ["A) A physiological reaction where the body reacts quickly to supply protection when situations seem threatening", "B) A method used to plan your time, make a schedule, and establish priorities", "C) The intentional modification of attitudes to produce improvement", "D) A tool used to identify strengths, weaknesses, opportunities, and threats", "E) A mental framework that shapes how you think, feel, and act"], a: "A" }
+    
+];
+
+
+    const container = document.getElementById('quiz-content');
+
+    function kurdishToEnglish(str) {
+        const dict = { '٠':0, '١':1, '٢':2, '٣':3, '٤':4, '٥':5, '٦':6, '٧':7, '٨':8, '٩':9 };
+        return String(str).replace(/[٠-٩]/g, function(w){ return dict[w]; });
+    }
+
+    data.forEach(item => {
+        const div = document.createElement('div');
+        const qNumStr = kurdishToEnglish(item.n);
+        const qNum = parseInt(qNumStr);
+        const isKurdish = (qNum >= 29 && qNum <= 54);
+
+        div.className = `q-block ${isKurdish ? 'rtl-block' : ''}`;
+        
+        div.innerHTML = `
+            <div class="q-text">${item.n}. ${item.q}</div>
+            <ul class="opts">${item.o.map(opt => `<li>${opt}</li>`).join('')}</ul>
+            <div class="ans-row">
+                <span class="ans-text">Answer: ${item.a}</span>
+                <button class="ans-btn" onclick="this.closest('.q-block').classList.toggle('revealed')">Answer</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+</script>
+
+</body>
+</html>
